@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
 class Gift extends Component {
-
   handleClicked = () => {
-    this.props.selectedGifId(this.props.id);
+    this.props.changeSelectedGif(this.props.id);
   }
 
   render() {
-    const src = `https://media.giphy.com/media/${this.props.id}/giphy.gif`;
+    const { id } = this.props;
+    if (!id) {
+      return null;
+    }
+
+    const src = `https://media.giphy.com/media/${id}/giphy.gif`;
     return (
       <img src={src} alt="" className="gif" onClick={this.handleClicked} />
     );
